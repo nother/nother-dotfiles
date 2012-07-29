@@ -3,6 +3,10 @@ for file in ${files}; do
 	source ${file}
 done
 
+if [ -f /usr/local/etc/bash_completion ]; then
+   source /usr/local/etc/bash_completion
+fi
+
 # for iTerm / Terminal.app
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
