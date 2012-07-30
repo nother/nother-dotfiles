@@ -26,9 +26,11 @@ Bundle 'hallison/vim-markdown'
 Bundle 'altercation/vim-colors-solarized'
 " scm
 Bundle 'tpope/vim-fugitive'
+" writing
+Bundle 'mikewest/vimroom'
+Bundle 'honza/writer.vim'
 " misc
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
 
 filetype plugin indent on  " required!
