@@ -54,8 +54,8 @@ function SetProseOptions()
     " http://contsys.tumblr.com/post/491802835/vim-soft-word-wrap
     " http://www.reddit.com/r/vim/comments/ni0c2/vim_for_prose_what_are_your_tips/
     " soft word wrap
-    set formatoptions=1
-    set linebreak
+    setlocal formatoptions=1
+    setlocal linebreak
     " navigate within wrapped lines
     nnoremap j gj
     nnoremap k gk
@@ -67,11 +67,11 @@ function SetProseOptions()
     inoremap ? ?<C-g>u
     inoremap : :<C-g>u
     " show the last line even if it is long
-    set display=lastline
+    setlocal display=lastline
     " spell check
-    set spell
+    setlocal spell
     " if you use two spaces between sentences:
-    " set cpoptions+=J
+    " setlocal cpoptions+=J
     " if you want a gutter on the left
-    " set foldcolumn=5
+    " setlocal foldcolumn=5
 endfunction
