@@ -32,6 +32,8 @@ set showmatch
 syntax on
 set background=dark
 colorscheme solarized
+" I like a darker background
+highlight Normal guibg=black
 
 au BufEnter * lcd %:p:h "change to directory of file
 au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
@@ -42,6 +44,7 @@ let g:yankring_history_dir = '$HOME/.vim'
 if has("gui_macvim")
    macm Window.Select\ Previous\ Tab  key=<C-k>
    macm Window.Select\ Next\ Tab      key=<C-j>
+   set guifont=Menlo:h13
 else
    nnoremap <c-j> :tabprevious<cr>
    nnoremap <c-k> :tabnext<cr>
