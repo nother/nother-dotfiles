@@ -12,8 +12,8 @@ prompt_user="${prompt_normal}\u"
 prompt_at="\[${reset}${white}\]@"
 prompt_host="\[${reset}${yellow}\]\h"
 
-if [[ "$ssh_tty" ]]; then
-    prompt_host="\[${yellow_underline}\]"
+if [[ "$SSH_TTY" ]]; then
+    prompt_host="\[${yellow_underline}\]\h"
 elif [[ "$user" == "root" ]]; then
     prompt_user="\[${red}\]"
 fi
