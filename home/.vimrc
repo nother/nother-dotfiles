@@ -6,8 +6,8 @@ source $HOME/.bundles.vim
 
 :inoremap ii <Esc>
 
-set nowritebackup
-set nobackup
+set backupdir=./.backup,~/.backup
+set directory=./.backup,~/.backup
 
 set vb
 set ruler
@@ -18,6 +18,7 @@ set wildmode=list:longest,full
 set hlsearch
 set ignorecase
 set smartcase
+nnoremap <silent> <c-l> :noh<cr><c-l>
 
 set tabstop=4
 set softtabstop=4
@@ -39,7 +40,17 @@ au BufEnter * lcd %:p:h "change to directory of file
 au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
 au vimenter * if !argc() | NERDTree | endif
 
+au FileType python set omnifunc=pythoncomplete#Complete
+au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+let g:pyindent_open_paren = '&sw2'
+
 let g:yankring_history_dir = '$HOME/.vim'
+
+nnoremap tp :tabprevious<cr>
+nnoremap tn :tabnext<cr>
+nnoremap te :tabedit 
+nnoremap gb :buffer 
 
 if has("gui_macvim")
    macm Window.Select\ Previous\ Tab  key=<C-k>
@@ -48,7 +59,6 @@ if has("gui_macvim")
 else
    nnoremap <c-j> :tabprevious<cr>
    nnoremap <c-k> :tabnext<cr>
-   nnoremap <c-l> :tabedit 
 endif
 
 autocmd BufRead,BufNewFile {*.txt,*.md,*.mkd,*.markdown} call SetProseOptions()
