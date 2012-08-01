@@ -36,14 +36,34 @@ colorscheme solarized
 " I like a darker background
 highlight Normal guibg=black
 
+let g:snippets_dir="~/.vim/bundle/snipmate.vim/snippets/,~/.snippets"
+
 au BufEnter * lcd %:p:h "change to directory of file
 au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
 au vimenter * if !argc() | NERDTree | endif
 
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
+set completeopt=menuone,longest,preview
+
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+au BufWritePost *.py call Flake8()
 let g:pyindent_open_paren = '&sw2'
+
+if has('python')
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+endif
 
 let g:yankring_history_dir = '$HOME/.vim'
 
