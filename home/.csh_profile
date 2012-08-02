@@ -1,0 +1,39 @@
+# using a non-standard ".csh_profile" filename to avoid stomping
+# on existing cshrc files
+
+foreach file (~/.profile.d/private/*.csh ~/.profile.d/*.csh)
+	source ${file}
+end
+
+if ( $?prompt ) then
+    # interactive shell
+
+    set nobeep
+    set noclobber
+    set filec
+    set notify
+    unset ignoreeof
+    unset autologout
+
+    set autoexpand = ambiguous
+    set autolist = ambiguous
+    set listmaxrows = 20
+    set correct = cmd
+    set wordchars = "*?_[]~="
+
+    set history = 1000
+    set savehist = (1000 merge)
+    set histfile = ~/.csh_history
+    set histdup = 'prev'
+
+    bindkey "^r" i-search-back
+    bindkey "^w" backward-word
+    bindkey "^s" forward-word
+    bindkey "^z" backward-delete-word
+    bindkey "^x" delete-word
+
+    if ( -f ~/.aliases.csh ) then
+        source ~/.aliases.csh
+    endif
+
+endif
