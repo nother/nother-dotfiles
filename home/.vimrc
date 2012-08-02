@@ -36,6 +36,8 @@ colorscheme solarized
 " I like a darker background
 highlight Normal guibg=black
 
+set scrolloff=2
+
 let g:snippets_dir="~/.vim/bundle/snipmate.vim/snippets/,~/.snippets"
 
 au BufEnter * lcd %:p:h "change to directory of file
@@ -71,14 +73,16 @@ nnoremap tp :tabprevious<cr>
 nnoremap tn :tabnext<cr>
 nnoremap te :tabedit 
 nnoremap gb :buffer 
+nnoremap g, :bprevious<cr>
+nnoremap g. :bnext<cr>
 
 if has("gui_macvim")
    macm Window.Select\ Previous\ Tab  key=<C-k>
    macm Window.Select\ Next\ Tab      key=<C-j>
    set guifont=Menlo:h13
 else
-   nnoremap <c-j> :tabprevious<cr>
-   nnoremap <c-k> :tabnext<cr>
+   "nnoremap <c-j> :tabprevious<cr>
+   "nnoremap <c-k> :tabnext<cr>
 endif
 
 autocmd BufRead,BufNewFile {*.txt,*.md,*.mkd,*.markdown} call SetProseOptions()

@@ -14,8 +14,8 @@ prompt_host="\[${reset}${yellow}\]\h"
 
 if [[ "$SSH_TTY" ]]; then
     prompt_host="\[${yellow_underline}\]\h"
-elif [[ "$user" == "root" ]]; then
-    prompt_user="\[${red}\]"
+elif [[ "$USER" == "root" ]]; then
+    prompt_user="\[${red}\]\u"
 fi
 
 export PS1="${prompt_path}\n${prompt_user}${prompt_at}${prompt_host}${prompt_normal}: "

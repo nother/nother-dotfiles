@@ -3,6 +3,6 @@ if [ -f ~/.dir_colors ]; then
    	# os x with homebrew coreutils installed
    	eval `gdircolors ~/.dir_colors`
    elif command -v dircolors > /dev/null; then
-   	eval `dircolors ~/.dir_colors`
+   	eval `dircolors -b ~/.dir_colors`
    fi
 fi
