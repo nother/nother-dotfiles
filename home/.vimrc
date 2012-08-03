@@ -4,28 +4,41 @@ source $HOME/.bundles.vim
 " to install bundles the first time:
 " vim -u ~/.bundles.vim +BundleInstall +q
 
-:inoremap ii <Esc>
+set encoding=utf-8
+inoremap ii <Esc>
 
 set backupdir=./.backup,~/.backup
 set directory=./.backup,~/.backup
 
-set vb
 set ruler
-set hidden
+set number
+set visualbell
 
+" buffers
+set hidden
+nnoremap gb :buffer 
+nnoremap g, :bprevious<cr>
+nnoremap g. :bnext<cr>
+au BufEnter * lcd %:p:h " change to directory of file
+
+set laststatus=2
+let g:Powerline_symbols='unicode'
+
+" files
 set wildmode=list:longest,full
 
+" searching
 set hlsearch
 set ignorecase
 set smartcase
 nnoremap <silent> <c-l> :noh<cr><c-l>
 
+" indentation
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
-
 set autoindent
 set backspace=indent,eol,start
 set showmatch
@@ -40,53 +53,31 @@ set scrolloff=2
 
 let g:snippets_dir="~/.vim/bundle/snipmate.vim/snippets/,~/.snippets"
 
-au BufEnter * lcd %:p:h "change to directory of file
 au BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
 au vimenter * if !argc() | NERDTree | endif
 
+" autocomplete
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 set completeopt=menuone,longest,preview
+autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, '<c-p>') |
+    \ endif
 
-au FileType python set omnifunc=pythoncomplete#Complete
-au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-au BufWritePost *.py call Flake8()
+" don't double indent
 let g:pyindent_open_paren = '&sw2'
 
-if has('python')
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-endif
+" don't gobble indentation for comments
+inoremap # X#
+
+set nofoldenable
+let g:pymode_folding = 0
 
 let g:yankring_history_dir = '$HOME/.vim'
 
-nnoremap tp :tabprevious<cr>
-nnoremap tn :tabnext<cr>
-nnoremap te :tabedit 
-nnoremap gb :buffer 
-nnoremap g, :bprevious<cr>
-nnoremap g. :bnext<cr>
-
-if has("gui_macvim")
-   macm Window.Select\ Previous\ Tab  key=<C-k>
-   macm Window.Select\ Next\ Tab      key=<C-j>
-   set guifont=Menlo:h13
-else
-   "nnoremap <c-j> :tabprevious<cr>
-   "nnoremap <c-k> :tabnext<cr>
-endif
-
 autocmd BufRead,BufNewFile {*.txt,*.md,*.mkd,*.markdown} call SetProseOptions()
-function SetProseOptions()
+function! SetProseOptions()
     " inspired by:
     " http://contsys.tumblr.com/post/491802835/vim-soft-word-wrap
     " http://www.reddit.com/r/vim/comments/ni0c2/vim_for_prose_what_are_your_tips/
@@ -112,3 +103,8 @@ function SetProseOptions()
     " if you want a gutter on the left
     " setlocal foldcolumn=5
 endfunction
+
+" no toolbar
+if has('gui_running')
+    set guioptions-=T
+endif
