@@ -11,17 +11,15 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'ervandew/supertab'
-" Bundle 'msanders/snipmate.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'honza/snipmate-snippets'
 Bundle 'garbas/vim-snipmate'
-
-"Bundle 'andrewle/vim-autoclose'
+Bundle 'nother/snipmate-snippets'
 " python
-Bundle 'klen/python-mode'
+if has('python')
+    Bundle 'klen/python-mode'
+endif
 Bundle 'nvie/vim-flake8'
-" Bundle 'sontek/rope-vim'
 " javacript
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
@@ -33,8 +31,10 @@ Bundle 'hallison/vim-markdown'
 " colors
 Bundle 'altercation/vim-colors-solarized'
 " scm
-Bundle 'vim-scripts/genutils'
-Bundle 'pydave/vim-perforce'
+if executable('p4')
+    Bundle 'vim-scripts/genutils'
+    Bundle 'pydave/vim-perforce'
+endif
 Bundle 'tpope/vim-fugitive'
 " writing
 Bundle 'mikewest/vimroom'
