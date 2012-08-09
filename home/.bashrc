@@ -15,3 +15,8 @@ alias ....='cd ../../..'
 
 alias v='vim'
 alias p='python'
+
+function is() {
+    ps aux | grep --color=always -i $1 | grep -v 'grep --color=always -i ';
+}
+function sssh() { ssh -Y -t $@ screen -RD $USER; }
