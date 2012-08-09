@@ -38,13 +38,11 @@ endif
 Bundle 'tpope/vim-fugitive'
 " writing
 Bundle 'mikewest/vimroom'
-Bundle 'honza/writer.vim'
 " misc
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'wincent/Command-T'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'sjl/gundo.vim'
 
 filetype plugin indent on  " required!
