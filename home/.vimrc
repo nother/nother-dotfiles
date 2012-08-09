@@ -74,8 +74,6 @@ autocmd FileType *
 " move custom snippets outside of ~/.vim
 let g:snippets_dir="~/.vim/bundle/snipmate.vim/snippets/,~/.snippets"
 
-autocmd BufRead,BufNewFile {*.md,*.mkd,*.markdown} set ft=markdown
-
 " python options
 nnoremap <leader>j :RopeGotoDefinition<cr>
 let g:pymode_folding = 0
