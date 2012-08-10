@@ -37,6 +37,7 @@ if executable('p4')
 endif
 Bundle 'tpope/vim-fugitive'
 " writing
+Bundle 'nother/vim-prose'
 Bundle 'mikewest/vimroom'
 " misc
 Bundle 'vim-scripts/YankRing.vim'
