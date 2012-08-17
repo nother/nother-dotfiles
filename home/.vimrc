@@ -18,7 +18,6 @@ set hidden
 nnoremap gb :buffer 
 nnoremap g, :bprevious<cr>
 nnoremap g. :bnext<cr>
-autocmd BufEnter * lcd %:p:h " change to directory of file
 
 set laststatus=2
 let g:Powerline_symbols='unicode'
