@@ -1,4 +1,6 @@
 escape ``
+
+defscrollback 1000
 termcapinfo xterm* ti@:te@
 
 hardstatus alwayslastline
