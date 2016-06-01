@@ -16,10 +16,10 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'garbas/vim-snipmate'
 Bundle 'nother/snipmate-snippets'
 " python
-if has('python')
+if has('python') || has('python3')
     Bundle 'klen/python-mode'
 endif
-Bundle 'nvie/vim-flake8'
+" Bundle 'nvie/vim-flake8'
 " javacript
 Bundle 'pangloss/vim-javascript'
 Bundle 'leshill/vim-json'
@@ -45,5 +45,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'wincent/Command-T'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'sjl/gundo.vim'
+Bundle "vim-scripts/SyntaxRange"
 
 filetype plugin indent on  " required!

@@ -19,9 +19,11 @@ alias v     vim
 alias p     python
 alias spel 'echo \!* | aspell -a | grep "^&"'
 alias ff   'firefox -P \!:1 -no-remote >& /dev/null &'
-alias rand 'od -X -A n /dev/urandom | head -1'
+alias rand 'od --width=24 -X -A n /dev/urandom | head -1'
 
 alias rgx 'find \!:1 -name "*.\!:2" | xargs egrep -n \!:3 \!:4*'
+
+alias json 'curl -s \!:1 | json_reformat'
 
 # perforce
 alias p4s 'p4 sync \!*'
